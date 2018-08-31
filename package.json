@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run start:dev",
+    "start:dev": "set NODE_ENV=development && nodemon index.js",
+    "start:prod": "node index.js",
+    "report": "nyc report --reporter=text",
+    "test": "nyc mocha"
   },
   "repository": {
     "type": "git",
