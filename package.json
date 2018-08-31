@@ -28,7 +28,15 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "eslint": "^5.4.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-prettier": "^2.6.2",
     "mocha": "^5.2.0",
-    "nyc": "^13.0.1"
+    "nodemon": "^1.18.4",
+    "nyc": "^13.0.1",
+    "prettier": "^1.14.2",
+    "typescript": "^3.0.3",
+    "typescript-eslint-parser": "^18.0.0"
   }
 }
