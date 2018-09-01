@@ -11,7 +11,7 @@ const routes = require("./routes");
 
 // module configuration
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 7000;
 
 // winston request logging
 // middleware to log your HTTP requests
