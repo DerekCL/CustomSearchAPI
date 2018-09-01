@@ -11,7 +11,7 @@ const routes = require("./routes");
 
 // module configuration
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 8080;
 
 // winston request logging
 // middleware to log your HTTP requests
@@ -27,10 +27,10 @@ app.use(
     msg: "HTTP {{req.method}} {{req.url}}",
     expressFormat: true,
     colorize: false,
-    ignoreRoute: function(req, res) {
+    ignoreRoute: () => {
       return false;
     },
-  }),
+  })
 );
 
 // app configuration
@@ -52,10 +52,10 @@ app.use(
         colorize: true,
       }),
     ],
-  }),
+  })
 );
 
 // starting the server
-app.listen(port);
+app.listen(port, () => console.log(`started on ${port}`));
 
 module.exports = app;
