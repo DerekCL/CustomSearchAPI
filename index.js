@@ -14,8 +14,6 @@ const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 7000;
 
-app.use(cors());
-
 // winston request logging
 // middleware to log your HTTP requests
 app.use(
@@ -40,8 +38,20 @@ app.use(
 app.use(compression());
 app.use(helmet());
 
+// Cors configuration
+var whitelist = ["http://localhost:5000", "http://localhost:9000"];
+var corsOptions = {
+  origin: function(origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+
 // routes
-app.use("/", routes);
+app.use("/", cors(corsOptions), routes);
 
 /**
  * winston error logging
