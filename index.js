@@ -38,20 +38,24 @@ app.use(
 app.use(compression());
 app.use(helmet());
 
-// Cors configuration
-var whitelist = ["http://localhost:5000"];
-var corsOptions = {
-  origin: function(origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-};
-
-// routes
-app.use("/", cors(corsOptions), routes);
+if (process.env.NODE_ENV === "production") {
+  // Cors configuration
+  var whitelist = ["http://localhost:5000"];
+  var corsOptions = {
+    origin: function(origin, callback) {
+      if (whitelist.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  };
+  // routes
+  app.use("/", cors(corsOptions), routes);
+} else {
+  // routes
+  app.use("/", cors(), routes);
+}
 
 /**
  * winston error logging
