@@ -8,10 +8,13 @@ const winston = require("winston");
 const expressWinston = require("express-winston");
 const helmet = require("helmet");
 const routes = require("./routes");
+const cors = require("cors");
 
 // module configuration
 const app = express();
 const port = process.env.PORT || 7000;
+
+app.use(cors());
 
 // winston request logging
 // middleware to log your HTTP requests
