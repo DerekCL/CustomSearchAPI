@@ -8,7 +8,7 @@
     "start:dev": "set NODE_ENV=development && nodemon index.js",
     "start:prod": "node index.js",
     "report": "nyc report --reporter=text",
-    "test": "nyc mocha"
+    "test": "nyc mocha --exit"
   },
   "repository": {
     "type": "git",
