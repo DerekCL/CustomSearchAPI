@@ -25,6 +25,10 @@ app.use(
         json: true,
         colorize: true,
       }),
+      new winston.transports.Http({
+        port: 9900,
+        path: "/logger/winston/v1",
+      }),
     ],
     meta: true,
     msg: "HTTP {{req.method}} {{req.url}}",
@@ -53,25 +57,6 @@ app.use(cors(corsOption));
 
 app.use("search/v1/", routes);
 
-// if (process.env.NODE_ENV === "production") {
-//   // Cors configuration
-//   var whitelist = ["http://localhost:5000"];
-//   var corsOptions = {
-//     origin: function(origin, callback) {
-//       if (whitelist.indexOf(origin) !== -1) {
-//         callback(null, true);
-//       } else {
-//         callback(new Error("Not allowed by CORS"));
-//       }
-//     },
-//   };
-//   // routes
-//   app.use("/", cors(corsOptions), routes);
-// } else {
-//   // routes
-//   app.use("/", cors(), routes);
-// }
-
 /**
  * winston error logging
  * middleware that log the errors of the pipeline.
@@ -82,6 +67,10 @@ app.use(
       new winston.transports.Console({
         json: true,
         colorize: true,
+      }),
+      new winston.transports.Http({
+        port: 9900,
+        path: "/logger/winston/v1",
       }),
     ],
   })
