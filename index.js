@@ -8,10 +8,13 @@ const winston = require("winston");
 const expressWinston = require("express-winston");
 const helmet = require("helmet");
 const routes = require("./routes");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
 // module configuration
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 7000;
 
 // winston request logging
 // middleware to log your HTTP requests
@@ -27,18 +30,47 @@ app.use(
     msg: "HTTP {{req.method}} {{req.url}}",
     expressFormat: true,
     colorize: false,
-    ignoreRoute: function(req, res) {
+    ignoreRoute: () => {
       return false;
     },
-  }),
+  })
 );
 
 // app configuration
 app.use(compression());
 app.use(helmet());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 
-// routes
+const corsOption = {
+  origin: true,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  exposedHeaders: ["x-auth-token"],
+};
+app.use(cors(corsOption));
+
 app.use("/", routes);
+
+// if (process.env.NODE_ENV === "production") {
+//   // Cors configuration
+//   var whitelist = ["http://localhost:5000"];
+//   var corsOptions = {
+//     origin: function(origin, callback) {
+//       if (whitelist.indexOf(origin) !== -1) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     },
+//   };
+//   // routes
+//   app.use("/", cors(corsOptions), routes);
+// } else {
+//   // routes
+//   app.use("/", cors(), routes);
+// }
 
 /**
  * winston error logging
@@ -52,10 +84,10 @@ app.use(
         colorize: true,
       }),
     ],
-  }),
+  })
 );
 
 // starting the server
-app.listen(port);
+app.listen(port, () => console.log(`started on ${port}`));
 
 module.exports = app;
