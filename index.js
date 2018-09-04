@@ -55,7 +55,7 @@ const corsOption = {
 };
 app.use(cors(corsOption));
 
-app.use("search/v1/", routes);
+app.use("/search/v1/", routes);
 
 /**
  * winston error logging
