@@ -46,5 +46,21 @@
     "prettier": "^1.14.2",
     "typescript": "^3.0.3",
     "typescript-eslint-parser": "^18.0.0"
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx",
+      ".js",
+      ".jsx"
+    ],
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ]
   }
 }
