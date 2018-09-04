@@ -51,7 +51,7 @@ const corsOption = {
 };
 app.use(cors(corsOption));
 
-app.use("/", routes);
+app.use("search/v1/", routes);
 
 // if (process.env.NODE_ENV === "production") {
 //   // Cors configuration
