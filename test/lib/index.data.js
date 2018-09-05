@@ -3988,8 +3988,7 @@ const companiesData = [
 const authResponseData = {
   status: "success",
   request_info: "user validation",
-  google_access_token:
-    "16ac896a4f7862eae6f045094377727226fc39d1856ac293c20a5a8b7a6aad6d0be771459dbc8cb04a65e54015ca91732c5708b3f92dc882e567935bfdc80e795d8a29e4b2b2684c9b5dfa72cda637591ed653d5167ee0448c92d50e2921c42348dfe808c5d6f4e1e919b1053e00836c67772e0c19733c8ff1163f14a2a55bb11a",
+  google_access_token: process.env.GOOGLE_ACCESS_TOKEN,
 };
 
 const endpoint = `/search/v1/`;
@@ -4004,10 +4003,7 @@ const query = `&companies[]=nike
 const url = `http://www.localhost:7000${endpoint}?${query}`;
 
 const body = {
-  google_access_token: `16ac896a4f7862eae6f045094377727226fc39d1856ac293c20a5a8b
-  7a6aad6d0be771459dbc8cb04a65e54015ca91732c5708b3f92dc882e567935bfdc80e795d8a29
-  e4b2b2684c9b5dfa72cda637591ed653d5167ee0448c92d50e2921c42348dfe808c5d6f4e1e919
-  b1053e00836c67772e0c19733c8ff1163f14a2a55bb11a`,
+  google_access_token: process.env.GOOGLE_ACCESS_TOKEN,
 };
 
 module.exports = {
