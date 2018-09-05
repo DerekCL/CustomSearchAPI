@@ -1,0 +1,12 @@
+{
+    "javascript.referencesCodeLens.enabled": true,
+    "javascript.implicitProjectConfig.checkJs": true,
+    "typescript.referencesCodeLens.enabled": true,
+    "[javascript]": {
+        "editor.formatOnSave": true,
+        "editor.rulers": [80]
+    },
+    "eslint.autoFixOnSave": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+}
