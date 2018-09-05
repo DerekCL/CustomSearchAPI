@@ -8,7 +8,7 @@
     "start:dev": "set NODE_ENV=development && nodemon index.js",
     "start:prod": "node index.js",
     "report": "nyc report --reporter=text",
-    "test": "nyc mocha"
+    "test": "nyc mocha --exit"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "chai-http": "^4.2.0",
     "eslint": "^5.4.0",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-node": "^7.0.1",
@@ -44,7 +45,19 @@
     "nodemon": "^1.18.4",
     "nyc": "^13.0.1",
     "prettier": "^1.14.2",
+    "sinon": "^6.2.0",
+    "sinon-chai": "^3.2.0",
+    "sinon-express-mock": "^2.0.5",
     "typescript": "^3.0.3",
     "typescript-eslint-parser": "^18.0.0"
+  },
+  "nyc": {
+    "extension": [
+      ".js"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ]
   }
 }
