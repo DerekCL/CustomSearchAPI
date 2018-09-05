@@ -1,7 +1,7 @@
 {
   "name": "customsearchapi",
   "version": "1.0.0",
-  "description": "",
+  "description": "An api that uses a custom search tool to return a list of companies and their domains",
   "main": "index.js",
   "scripts": {
     "start": "npm run start:dev",
